@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+  <!-- ======================================================= -->
+  <!-- waldoElements -->
+  <!-- ======================================================= -->
+
+ <!-- inserts into the WALDO.MANIFESTCONTENT table -->
+  <entry key="INSERTMANIFESTCONTENT">
+  	INSERT INTO WALDO.MANIFESTCONTENT (ID,KEY,ETAG,MODDATE,SIZE,STORAGECLASS)
+  		values (?,?,?,?,?,?)
+  </entry>
+ 
+ <!-- retrieves from the WALDO.MANIFESTCONTENT table -->
+  <entry key="getMANIFESTCONTENT">
+  	SELECT mc.* from WALDO.MANIFESTCONTENT mc
+  </entry>
+  
+ <!-- retrieves from the WALDO.MANIFESTCONTENT table -->
+  <entry key="getMANIFESTCONTENTBYKEY">
+  	SELECT mc.* from WALDO.MANIFESTCONTENT mc
+  	WHERE mc.KEY = ?
+  </entry>
+ <!-- retrieves from the WALDO.MANIFESTCONTENT table -->
+  <entry key="getMANIFESTCONTENTBYID">
+  	SELECT mc.* from WALDO.MANIFESTCONTENT mc
+  	WHERE mc.ID = ?
+  </entry>
+  
+ <!-- inserts into the WALDO.EXIFDATA table -->
+  <entry key="INSERTEXIFDATA">
+  	INSERT INTO WALDO.EXIFDATA (ID,CONTENTKEYID,KEY,VALUE)
+  		values (?,?,?,?);
+  </entry>
+  
+ <!-- retrieves from the WALDO.EXIFDATA table -->
+  <entry key="getEXIFDATA">
+  	SELECT ed.* from WALDO.EXIFDATA ed
+  </entry>
+  
+ <!-- retrieves from the WALDO.EXIFDATA table -->
+  <entry key="getEXIFDATABYCONTENTKEY">
+  	SELECT ed.* from WALDO.EXIFDATA ed
+  	INNER JOIN WALDO.MANIFESTCONTENT mc
+  		ON mc.id = ed.contentkeyid
+  	WHERE mc.key = ?
+  </entry>
+  
+ <!-- retrieves from the WALDO.EXIFDATA table -->
+  <entry key="getEXIFDATABYCONTENTID">
+  	SELECT ed.* from WALDO.EXIFDATA ed
+  	INNER JOIN WALDO.MANIFESTCONTENT mc
+  		ON mc.id = ed.contentkeyid
+  	WHERE mc.id = ?
+  </entry>
+  
+ </properties>

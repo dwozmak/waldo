@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://s3.amazonaws.com/doc/2006-03-01/" 
+	xmlns:tns="http://s3.amazonaws.com/doc/2006-03-01/" 
+	elementFormDefault="qualified">
+  <xs:element name="ListBucketResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="Name"/>
+        <xs:element type="xs:string" name="Prefix"/>
+        <xs:element type="xs:string" name="Marker"/>
+        <xs:element type="xs:short" name="MaxKeys"/>
+        <xs:element type="xs:string" name="IsTruncated"/>
+        <xs:element name="Contents" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Key"/>
+              <xs:element type="xs:dateTime" name="LastModified"/>
+              <xs:element type="xs:string" name="ETag"/>
+              <xs:element type="xs:int" name="Size"/>
+              <xs:element type="xs:string" name="StorageClass"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
